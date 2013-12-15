@@ -1,5 +1,5 @@
 # Memcached
-# VERSION	1.0
+# VERSION	1.1
 #
 
 # use dotCloud's base image
@@ -13,3 +13,12 @@ RUN apt-get update
 
 # install memcached
 RUN apt-get install -y memcached
+
+# launch memcached when the container starts
+ENTRYPOINT ["memcached"]
+
+# run as the daemon user
+USER daemon
+
+# expose memcached port
+EXPOSE 11211
